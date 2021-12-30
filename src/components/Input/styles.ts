@@ -1,10 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-interface ContainerProps {
+interface InputContainerProps {
   hasIcon: boolean;
+  hasPasswordButton: boolean;
+  hasError: boolean;
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div``;
+
+export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
 
   width: 100%;
@@ -40,11 +44,23 @@ export const Container = styled.div<ContainerProps>`
     font-size: 16px;
 
     padding-left: ${({ hasIcon }) => (hasIcon ? '0' : '16px')};
+    padding-right: ${({ hasPasswordButton }) =>
+      hasPasswordButton ? '0' : '16px'};
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.gray[400]};
     }
   }
+
+  ${({ theme, hasError }) =>
+    hasError &&
+    css`
+      border-color: ${theme.colors.danger} !important;
+
+      svg {
+        color: ${theme.colors.danger} !important;
+      }
+    `}
 `;
 
 export const IconContainer = styled.div`
@@ -69,4 +85,13 @@ export const IconContainer = styled.div`
       font-size: 20px;
     }
   }
+`;
+
+export const ErrorMessage = styled.span`
+  color: ${({ theme }) => theme.colors.danger};
+  margin-top: ${({ theme }) => theme.spacing.xs};
+  display: inline-block;
+  font-size: 14px;
+
+  letter-spacing: 0.5px;
 `;

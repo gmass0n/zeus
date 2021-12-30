@@ -14,11 +14,16 @@ export const Container = styled.button`
   font-size: 16px;
   text-transform: uppercase;
 
-  font-weight: 600;
+  font-weight: 700;
 
   transition: filter 0.3s ease-in-out;
 
-  &:hover {
+  &:hover:not(:disabled) {
     filter: brightness(0.75);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: brightness(0.45);
   }
 `;

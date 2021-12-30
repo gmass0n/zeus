@@ -66,6 +66,7 @@ export const LeftBox = styled.aside`
     font-size: 48px;
     line-height: 64px;
     margin-top: ${({ theme }) => theme.spacing.xlg};
+    max-width: 400px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
@@ -133,6 +134,7 @@ export const FormFooter = styled.footer`
     a {
       color: ${({ theme }) => theme.colors.primary};
       white-space: nowrap;
+      font-weight: 700;
 
       transition: filter 0.3s ease-in-out;
 

@@ -6,12 +6,14 @@ export const theme = {
     onShape: '#E1E1E6',
     background: '#121214',
     onBackground: '#E1E1E6',
+    danger: '#d34242',
     gray: {
       600: '#28272C',
       300: '#757575',
     },
   },
   spacing: {
+    xs: '8px',
     sm: '16px',
     md: '24px',
     lg: '32px',
