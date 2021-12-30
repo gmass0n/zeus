@@ -1,7 +1,9 @@
 import { NextPage } from 'next';
 
-const Home: NextPage = () => {
-  return <h1>Hello Home</h1>;
+import { SignIn } from '~/pages/SignIn';
+
+const SignInPage: NextPage = () => {
+  return <SignIn />;
 };
 
-export default Home;
+export default SignInPage;

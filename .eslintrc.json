@@ -4,7 +4,6 @@
     "es6": true
   },
   "extends": [
-    "plugin:react/recommended",
     "airbnb",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
@@ -23,12 +22,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "prettier",
-    "eslint-plugin-import-helpers"
-  ],
+  "plugins": ["react-hooks", "prettier", "eslint-plugin-import-helpers"],
   "rules": {
     "consistent-return": "off",
     "react-hooks/rules-of-hooks": "error",
@@ -44,10 +38,8 @@
     "import/no-cycle": "off",
     "no-unused-expressions": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "jsx-a11y/control-has-associated-label": "off",
     "react/display-name": "off",
     "no-underscore-dangle": "off",
-    "jsx-a11y/anchor-is-valid": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
