@@ -139,6 +139,7 @@ export const SignIn: FC = () => {
               value={formData.password}
               error={formErrors.password}
               onChange={handleChangeInputValue}
+              autoComplete="current-password"
             />
           </fieldset>
 
