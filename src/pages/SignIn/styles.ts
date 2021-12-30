@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
+import signinBackground from '~/assets/images/signin-background.jpeg';
+
 const fadeFromBottomAnimation = keyframes`
   from { opacity: 0; transform: translateY(60px); }
   to { opacity: 1 }
@@ -13,9 +15,15 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
 
-  background: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.background};
   overflow-y: auto;
   padding: ${({ theme }) => theme.spacing.lg};
+
+  background-size: cover;
+  background-position: 10% 0;
+  background-repeat: no-repeat;
+  background-image: ${({ theme }) =>
+    `linear-gradient(transparent, ${theme.colors.background}de), url(${signinBackground.src})`};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: ${({ theme }) => theme.spacing.md};
