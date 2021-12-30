@@ -7,9 +7,9 @@ import Image from 'next/image';
 import { Input } from '~/components/Input';
 import { Button } from '~/components/Button';
 
-import { Container, Content, LeftBox, Form } from './styles';
-
 import logoImg from '~/assets/images/logo.png';
+
+import { Container, Content, LeftBox, Form, FormFooter } from './styles';
 
 export const SignIn: FC = () => {
   return (
@@ -52,6 +52,19 @@ export const SignIn: FC = () => {
           </fieldset>
 
           <Button type="submit">Entrar</Button>
+
+          <FormFooter>
+            <span>
+              Não tem uma conta?{' '}
+              <a
+                href="https://tiowill.com.br/setupzeus-bio/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Cadastre-se
+              </a>
+            </span>
+          </FormFooter>
         </Form>
       </Content>
     </Container>

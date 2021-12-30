@@ -115,3 +115,29 @@ export const Form = styled.form`
     padding: ${({ theme }) => theme.spacing.md};
   }
 `;
+
+export const FormFooter = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: ${({ theme }) => theme.spacing.lg};
+
+  span {
+    text-align: center;
+    font-size: 16px;
+    color: ${({ theme }) => theme.colors.onShape};
+    line-height: 24px;
+
+    a {
+      color: ${({ theme }) => theme.colors.primary};
+      white-space: nowrap;
+
+      transition: filter 0.3s ease-in-out;
+
+      &:hover {
+        filter: brightness(0.75);
+      }
+    }
+  }
+`;

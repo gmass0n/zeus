@@ -28,4 +28,8 @@ export const GlobalStyle = createGlobalStyle`
   input {
     border: none;
   }
+
+  a {
+    text-decoration: none;
+  }
 `;

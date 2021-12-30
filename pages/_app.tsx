@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
-import { AppProvider } from '~/hooks';
+import { ThemeProvider } from 'styled-components';
 
+import { theme } from '~/styles/theme';
 import { GlobalStyle } from '~/styles/global';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
@@ -14,10 +15,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <title>Setup Zeus</title>
       </Head>
 
-      <AppProvider>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
+
         <Component {...pageProps} />
-      </AppProvider>
+      </ThemeProvider>
     </>
   );
 }
