@@ -53,7 +53,11 @@ export const Input: FC<InputProps> = ({
 
         {type === 'password' && (
           <IconContainer>
-            <button type="button" onClick={handleTogglePasswordIsVisible}>
+            <button
+              type="button"
+              onClick={handleTogglePasswordIsVisible}
+              aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
+            >
               {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
             </button>
           </IconContainer>
