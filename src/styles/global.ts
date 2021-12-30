@@ -14,6 +14,11 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     overflow: hidden;
   }
+
+  body {
+    text-rendering: optimizelegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+  }
   
   fieldset {
     border: none;
