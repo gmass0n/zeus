@@ -8,35 +8,36 @@ const fadeFromBottomAnimation = keyframes`
 `;
 
 export const Container = styled.main`
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
 
   display: flex;
   align-items: center;
-  justify-content: center;
 
   background-color: ${({ theme }) => theme.colors.background};
-  overflow-y: auto;
-  padding: ${({ theme }) => theme.spacing.lg};
 
   background-size: cover;
   background-position: 10% 0;
   background-repeat: no-repeat;
   background-image: ${({ theme }) =>
     `linear-gradient(transparent, ${theme.colors.background}de), url(${signinBackground.src})`};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: ${({ theme }) => theme.spacing.md};
-  }
 `;
 
 export const Content = styled.section`
+  flex: 1;
+
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: ${({ theme }) => theme.spacing.lg};
+
+  padding: ${({ theme }) => theme.spacing.lg};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex-direction: column;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: ${({ theme }) => theme.spacing.md};
   }
 `;
 

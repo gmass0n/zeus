@@ -10,14 +10,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body, #__next {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    min-height: 100%;
   }
 
   body {
     text-rendering: optimizelegibility !important;
     -webkit-font-smoothing: antialiased !important;
+    overflow-y: auto;
+
+    background-color: ${({ theme }) => theme.colors.background};
   }
   
   fieldset {
