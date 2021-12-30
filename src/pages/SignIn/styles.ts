@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeFromBottomAnimation = keyframes`
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1 }
+`;
 
 export const Container = styled.main`
   height: 100vh;
@@ -35,11 +40,15 @@ export const LeftBox = styled.aside`
   max-width: 480px;
   width: 100%;
 
+  animation: ${fadeFromBottomAnimation} 0.7s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+
   a {
-    transition: opacity 0.4s;
+    transition: filter 0.3s ease-in-out;
 
     &:hover {
-      opacity: 0.7;
+      filter: brightness(0.75);
     }
   }
 
@@ -77,6 +86,10 @@ export const Form = styled.form`
   background: ${({ theme }) => theme.colors.shape};
   padding: ${({ theme }) => theme.spacing.xlg};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
+
+  animation: ${fadeFromBottomAnimation} 0.7s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.12s;
 
   > fieldset {
     display: flex;

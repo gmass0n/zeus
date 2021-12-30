@@ -36,9 +36,15 @@ export const SignIn: FC = () => {
 
         <Form>
           <fieldset>
-            <Input icon={FaEnvelope} placeholder="Digite seu e-mail" />
+            <Input
+              name="email"
+              icon={FaEnvelope}
+              placeholder="Digite seu e-mail"
+              inputMode="email"
+            />
 
             <Input
+              name="password"
               icon={FaLock}
               placeholder="Digite sua senha"
               type="password"
