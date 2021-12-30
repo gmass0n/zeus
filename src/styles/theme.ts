@@ -10,6 +10,7 @@ export const theme = {
     gray: {
       600: '#28272C',
       300: '#757575',
+      100: '#DDDD',
     },
   },
   spacing: {

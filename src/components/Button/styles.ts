@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const spinAnimation = keyframes`
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
+`;
 
 export const Container = styled.button`
   display: flex;
@@ -26,4 +31,15 @@ export const Container = styled.button`
     cursor: not-allowed;
     filter: brightness(0.45);
   }
+`;
+
+export const Loader = styled.span`
+  width: 24px;
+  height: 24px;
+  border: ${({ theme }) => `3px solid ${theme.colors.background}`};
+  border-top-color: ${({ theme }) => theme.colors.background}33;
+  border-left-color: ${({ theme }) => theme.colors.background}33;
+  border-radius: 50%;
+
+  animation: ${spinAnimation} 0.6s linear infinite;
 `;

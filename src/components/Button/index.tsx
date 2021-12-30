@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, FC } from 'react';
 
-import { Container } from './styles';
+import { Container, Loader } from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
@@ -9,9 +9,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button: FC<ButtonProps> = ({
   children,
   isLoading = false,
+  disabled,
   ...props
 }) => {
   return (
-    <Container {...props}>{isLoading ? 'carregando...' : children}</Container>
+    <Container disabled={isLoading ? true : disabled} {...props}>
+      {isLoading ? <Loader /> : children}
+    </Container>
   );
 };

@@ -30,6 +30,7 @@ type FormErrors = Record<keyof FormData, string>;
 export const SignIn: FC = () => {
   const [formData, setFormData] = useState({} as FormData);
   const [formErrors, setFormErrors] = useState({} as FormErrors);
+  const [isSigning, setIsSigning] = useState(false);
 
   const canSignIn = useMemo(() => {
     const hasNotValue = !formData.email || !formData.password;
@@ -85,7 +86,11 @@ export const SignIn: FC = () => {
   const handleSignIn: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
+    setIsSigning(true);
+
     const isFormDataValid = validateFormData();
+
+    setIsSigning(false);
 
     if (!isFormDataValid) return;
 
@@ -137,7 +142,7 @@ export const SignIn: FC = () => {
             />
           </fieldset>
 
-          <Button type="submit" disabled={!canSignIn}>
+          <Button type="submit" disabled={!canSignIn} isLoading={isSigning}>
             Entrar
           </Button>
 
