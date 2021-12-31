@@ -2,6 +2,7 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
 import { ThemeProvider } from 'styled-components';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import { theme } from '~/styles/theme';
 import { GlobalStyle } from '~/styles/global';
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       </Head>
 
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <ChakraProvider>
+          <GlobalStyle />
 
-        <Component {...pageProps} />
+          <Component {...pageProps} />
+        </ChakraProvider>
       </ThemeProvider>
     </>
   );

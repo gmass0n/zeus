@@ -10,6 +10,7 @@ import {
   ErrorMessage,
 } from './styles';
 
+import { Tooltip } from '../Tooltip';
 import { Collapse } from '../Collapse';
 
 interface InputProps extends InputHTMLAttributes<HTMLButtonElement> {
@@ -60,7 +61,11 @@ export const Input: FC<InputProps> = ({
               onClick={handleTogglePasswordIsVisible}
               aria-label={isPasswordVisible ? 'Hide password' : 'Show password'}
             >
-              {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+              <Tooltip
+                label={isPasswordVisible ? 'Esconder senha' : 'Mostrar senha'}
+              >
+                <div>{isPasswordVisible ? <FaEyeSlash /> : <FaEye />}</div>
+              </Tooltip>
             </button>
           </IconContainer>
         )}

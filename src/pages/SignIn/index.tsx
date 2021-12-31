@@ -143,7 +143,12 @@ export const SignIn: FC = () => {
             />
           </fieldset>
 
-          <Button type="submit" disabled={!canSignIn} isLoading={isSigning}>
+          <Button
+            type="submit"
+            disabled={!canSignIn}
+            isLoading={isSigning}
+            tooltip={!canSignIn && 'Preencha os campos acima'}
+          >
             Entrar
           </Button>
 
