@@ -9,7 +9,10 @@ import {
 
 import { FaLock, FaEnvelope } from 'react-icons/fa';
 
+import { useRouter } from 'next/router';
 import Image from 'next/image';
+
+import { routes } from '~/constants/routes';
 
 import { Input } from '~/components/Input';
 import { Button } from '~/components/Button';
@@ -28,6 +31,8 @@ interface FormData {
 type FormErrors = Record<keyof FormData, string>;
 
 export const SignIn: FC = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({} as FormData);
   const [formErrors, setFormErrors] = useState({} as FormErrors);
   const [isSigning, setIsSigning] = useState(false);
@@ -94,7 +99,7 @@ export const SignIn: FC = () => {
 
     if (!isFormDataValid) return;
 
-    console.log({ formData });
+    router.push(routes.home);
   };
 
   return (

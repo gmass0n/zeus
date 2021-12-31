@@ -11,14 +11,13 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body, #__next {
     min-height: 100%;
+    background-color: ${({ theme }) => theme.colors.background};
   }
 
   body {
     text-rendering: optimizelegibility !important;
     -webkit-font-smoothing: antialiased !important;
     overflow-y: auto;
-
-    background-color: ${({ theme }) => theme.colors.background};
   }
   
   fieldset {
@@ -37,5 +36,9 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
   }
 `;

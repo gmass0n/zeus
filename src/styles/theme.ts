@@ -10,9 +10,11 @@ export const theme = {
     gray: {
       600: '#28272C',
       300: '#757575',
+      200: '#a8a8b3',
       100: '#DDDD',
     },
   },
+  boxShadow: '#121214 0px 2px 20px',
   spacing: {
     xs: '8px',
     sm: '16px',
@@ -24,6 +26,7 @@ export const theme = {
     sm: '4px',
   },
   breakpoints: {
+    laptop: '1440px',
     tablet: '768px',
     mobile: '375px',
   },

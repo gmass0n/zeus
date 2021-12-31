@@ -96,6 +96,7 @@ export const Form = styled.form`
   background: ${({ theme }) => theme.colors.shape};
   padding: ${({ theme }) => theme.spacing.xlg};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
+  box-shadow: ${({ theme }) => theme.boxShadow};
 
   animation: ${fadeFromBottomAnimation} 0.7s ease-out forwards;
   opacity: 0;
