@@ -10,6 +10,8 @@ import {
   ErrorMessage,
 } from './styles';
 
+import { Collapse } from '../Collapse';
+
 interface InputProps extends InputHTMLAttributes<HTMLButtonElement> {
   icon?: IconType;
   error?: string;
@@ -64,7 +66,9 @@ export const Input: FC<InputProps> = ({
         )}
       </InputContainer>
 
-      {!!error && <ErrorMessage>{error}</ErrorMessage>}
+      <Collapse isOpen={!!error}>
+        <ErrorMessage>{error}</ErrorMessage>
+      </Collapse>
     </Container>
   );
 };
