@@ -67,6 +67,7 @@ export const LeftBox = styled.aside`
     line-height: 64px;
     margin-top: ${({ theme }) => theme.spacing.xlg};
     max-width: 400px;
+    font-weight: bold;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
