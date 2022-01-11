@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useCallback, useState } from 'react';
 
-import useEventListener from '~/utils/eventListener';
+import { useEventListener } from './eventListener';
 
 interface UseFullscreenResponse {
   toggle(): void;

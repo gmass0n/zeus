@@ -22,5 +22,14 @@ export const Container = styled.main`
 `;
 
 export const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
   flex: 1;
+
+  > video {
+    width: 100%;
+    max-height: 100%;
+  }
 `;

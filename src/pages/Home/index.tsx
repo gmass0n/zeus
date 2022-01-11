@@ -1,6 +1,7 @@
-import { FC } from 'react';
+/* eslint-disable jsx-a11y/media-has-caption */
+import { FC, useRef } from 'react';
 
-import { MdPresentToAll } from 'react-icons/md';
+import { MdCancelPresentation, MdPresentToAll } from 'react-icons/md';
 import { FiPower } from 'react-icons/fi';
 import { BiExitFullscreen, BiFullscreen } from 'react-icons/bi';
 
@@ -8,28 +9,41 @@ import { useRouter } from 'next/router';
 
 import { routes } from '~/constants/routes';
 
+import { useScreenSharing } from '~/hooks/screenSharing';
 import { useFullscreen } from '~/hooks/fullscreen';
 
 import { ActionButton } from '~/components/ActionButton';
 
 import { Container, Content } from './styles';
 
-export const Home: FC = () => {
+export const Home: FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
   const router = useRouter();
 
-  const { toggle: toggleFullscreen, isFullscreen } = useFullscreen();
+  const localVideoRef = useRef<HTMLVideoElement>(null);
+
+  const { toggle: toggleIsFullscreen, isFullscreen } = useFullscreen();
+  const { toggle: toggleIsSharing, isSharing: isSharingScreen } =
+    useScreenSharing(localVideoRef, isAdmin);
 
   return (
     <Container>
-      <Content />
+      <Content>
+        <video ref={localVideoRef} autoPlay playsInline />
+      </Content>
 
       <footer>
-        <ActionButton tooltip="Apresentar" icon={MdPresentToAll} />
+        {isAdmin && (
+          <ActionButton
+            tooltip={isSharingScreen ? 'Parar de apresentar' : 'Apresentar'}
+            icon={isSharingScreen ? MdCancelPresentation : MdPresentToAll}
+            onClick={toggleIsSharing}
+          />
+        )}
 
         <ActionButton
           tooltip={isFullscreen ? 'Sair da tela cheia' : 'Tela cheia'}
           icon={isFullscreen ? BiExitFullscreen : BiFullscreen}
-          onClick={toggleFullscreen}
+          onClick={toggleIsFullscreen}
         />
 
         <ActionButton

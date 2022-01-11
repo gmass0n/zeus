@@ -1,18 +1,30 @@
 import Head from 'next/head';
-import { NextPage } from 'next';
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from 'next';
 
-import { SignIn } from '~/pages/SignIn';
+import { Home } from '~/pages/Home';
 
-const SignInPage: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: { isAdmin: context.query.isAdmin === 'true' },
+  };
+};
+
+const HomePage: NextPage<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = ({ isAdmin }) => {
   return (
     <>
       <Head>
-        <title>Login | Setup Zeus</title>
+        <title>Início | Setup Zeus</title>
       </Head>
 
-      <SignIn />
+      <Home isAdmin={isAdmin} />
     </>
   );
 };
 
-export default SignInPage;
+export default HomePage;
