@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
-import { ThemeProvider } from 'styled-components';
-import { ChakraProvider } from '@chakra-ui/react';
+import { AppProvider } from '~/components/AppProvider';
 
-import { theme } from '~/styles/theme';
 import { GlobalStyle } from '~/styles/global';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
@@ -16,13 +14,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <title>Setup Zeus</title>
       </Head>
 
-      <ThemeProvider theme={theme}>
-        <ChakraProvider>
-          <GlobalStyle />
+      <AppProvider>
+        <GlobalStyle />
 
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </ThemeProvider>
+        <Component {...pageProps} />
+      </AppProvider>
     </>
   );
 }

@@ -5,20 +5,19 @@ import { MdCancelPresentation, MdPresentToAll } from 'react-icons/md';
 import { FiPower } from 'react-icons/fi';
 import { BiExitFullscreen, BiFullscreen } from 'react-icons/bi';
 
-import { useRouter } from 'next/router';
-
-import { routes } from '~/constants/routes';
-
 import { useScreenSharing } from '~/hooks/screenSharing';
 import { useFullscreen } from '~/hooks/fullscreen';
+import { signOut } from '~/hooks/auth';
 
 import { ActionButton } from '~/components/ActionButton';
 
 import { Container, Content } from './styles';
 
-export const Home: FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
-  const router = useRouter();
+interface HomeProps {
+  isAdmin: boolean;
+}
 
+export const Home: FC<HomeProps> = ({ isAdmin }) => {
   const localVideoRef = useRef<HTMLVideoElement>(null);
 
   const { toggle: toggleIsFullscreen, isFullscreen } = useFullscreen();
@@ -46,11 +45,7 @@ export const Home: FC<{ isAdmin: boolean }> = ({ isAdmin }) => {
           onClick={toggleIsFullscreen}
         />
 
-        <ActionButton
-          tooltip="Sair"
-          icon={FiPower}
-          onClick={() => router.push(routes.signIn)}
-        />
+        <ActionButton tooltip="Sair" icon={FiPower} onClick={signOut} />
       </footer>
     </Container>
   );

@@ -14,6 +14,9 @@ import Image from 'next/image';
 
 import { routes } from '~/constants/routes';
 
+import { useToast } from '~/hooks/toast';
+import { useAuth } from '~/hooks/auth';
+
 import { Input } from '~/components/Input';
 import { Button } from '~/components/Button';
 
@@ -31,7 +34,10 @@ interface FormData {
 type FormErrors = Record<keyof FormData, string>;
 
 export const SignIn: FC = () => {
+  const { signIn } = useAuth();
+
   const router = useRouter();
+  const toast = useToast();
 
   const [formData, setFormData] = useState({} as FormData);
   const [formErrors, setFormErrors] = useState({} as FormErrors);
@@ -88,18 +94,52 @@ export const SignIn: FC = () => {
     return isValid;
   };
 
-  const handleSignIn: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSignIn: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    setIsSigning(true);
+    try {
+      setIsSigning(true);
 
-    const isFormDataValid = validateFormData();
+      const isFormDataValid = validateFormData();
 
-    setIsSigning(false);
+      if (!isFormDataValid) {
+        setIsSigning(false);
+        return;
+      }
 
-    if (!isFormDataValid) return;
+      await signIn({ email: formData.email, password: formData.password });
 
-    router.push(routes.home);
+      router.push(routes.HOME);
+    } catch (error) {
+      setIsSigning(false);
+
+      if (error.response?.data?.tag === 'PAGARME_ERROR') {
+        toast.show({
+          title: 'Ops, usuário não encontrado!',
+          description: 'Entre em contato com a nossa equipe.',
+          variant: 'error',
+        });
+
+        return;
+      }
+
+      if (error.response?.data?.tag === 'USER_PASSWORD_INVALID') {
+        toast.show({
+          title: 'Ops, senha inválida!',
+          description:
+            'Essa senha não confere com o e-mail informado, entre em contato com a nossa equipe.',
+          variant: 'error',
+        });
+
+        return;
+      }
+
+      toast.show({
+        title: 'Ops, ocorreu um erro ao entrar com a sua conta!',
+        description: 'Recarregue a página e tente novamente.',
+        variant: 'error',
+      });
+    }
   };
 
   return (
@@ -131,6 +171,7 @@ export const SignIn: FC = () => {
               icon={FaEnvelope}
               placeholder="Digite seu e-mail"
               inputMode="email"
+              autoComplete="email"
               value={formData.email}
               error={formErrors.email}
               onChange={handleChangeInputValue}
