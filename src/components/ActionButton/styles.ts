@@ -6,7 +6,7 @@ export const Container = styled.button`
   justify-content: center;
 
   border-radius: ${({ theme }) => theme.borderRadius.sm};
-  background: ${({ theme }) => theme.colors.shape};
+  background: ${({ theme }) => theme.colors.surface};
 
   height: 48px;
   width: 48px;

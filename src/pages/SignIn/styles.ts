@@ -1,7 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-import signinBackground from '~/assets/images/signin-background.jpeg';
-
 const fadeFromBottomAnimation = keyframes`
   from { opacity: 0; transform: translateY(60px); }
   to { opacity: 1 }
@@ -12,14 +10,6 @@ export const Container = styled.main`
 
   display: flex;
   align-items: center;
-
-  background-color: ${({ theme }) => theme.colors.background};
-
-  background-size: cover;
-  background-position: 10% 0;
-  background-repeat: no-repeat;
-  background-image: ${({ theme }) =>
-    `linear-gradient(transparent, ${theme.colors.background}de), url(${signinBackground.src})`};
 `;
 
 export const Content = styled.section`
@@ -94,7 +84,7 @@ export const Form = styled.form`
   max-width: 480px;
   width: 100%;
 
-  background: ${({ theme }) => theme.colors.shape};
+  background: ${({ theme }) => theme.colors.surface};
   padding: ${({ theme }) => theme.spacing.xlg};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -130,7 +120,7 @@ export const FormFooter = styled.footer`
   span {
     text-align: center;
     font-size: 16px;
-    color: ${({ theme }) => theme.colors.onShape};
+    color: ${({ theme }) => theme.colors.onSurface};
     line-height: 24px;
 
     a {

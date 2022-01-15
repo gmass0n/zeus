@@ -5,6 +5,7 @@ import {
   useState,
   useCallback,
   useEffect,
+  useMemo,
 } from 'react';
 
 import Router from 'next/router';
@@ -24,6 +25,7 @@ import { SignInRequestDTO } from '~/dtos/SignInRequestDTO';
 interface IAuthContextData {
   user: IUser;
   signIn(data: SignInRequestDTO): Promise<void>;
+  isAuthenticated: boolean;
 }
 
 const AuthContext = createContext({} as IAuthContextData);
@@ -35,6 +37,8 @@ const signOut = (ctx = undefined): void => {
 
 const AuthProvider: FC = ({ children }) => {
   const [user, setUser] = useState<IUser | null>(null);
+
+  const isAuthenticated = useMemo(() => !!user, [user]);
 
   useEffect(() => {
     (async () => {
@@ -65,7 +69,7 @@ const AuthProvider: FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signIn }}>
+    <AuthContext.Provider value={{ user, signIn, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

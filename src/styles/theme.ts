@@ -2,8 +2,8 @@ export const theme = {
   colors: {
     primary: '#FFC300',
     onPrimary: '#121214',
-    shape: '#202024',
-    onShape: '#E1E1E6',
+    surface: '#202024',
+    onSurface: '#E1E1E6',
     background: '#121214',
     onBackground: '#E1E1E6',
     danger: '#d34242',

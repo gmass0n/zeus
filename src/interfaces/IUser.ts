@@ -1,3 +1,4 @@
+import { UserTypeEnum } from '~/enums/UserTypeEnum';
 import { UserStatusEnum } from '~/enums/UserStatusEnum';
 
 export interface IUser {
@@ -5,4 +6,5 @@ export interface IUser {
   name: string;
   email: string;
   status: UserStatusEnum;
+  type: UserTypeEnum;
 }
